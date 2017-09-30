@@ -12,10 +12,6 @@ public class PreIndexController {
 
     @RequestMapping(value = "/")
     public ModelAndView indexReturn (HttpSession session) {
-        if (session.isNew()) {
-            session.setAttribute("Autorization", "ignored");
-            session.setAttribute("Login", "ignored");
-            session.setAttribute("Role", "ignored");}
-        return new ModelAndView("index");
+        return new ModelAndView("redirect:index.html");
     }
 }

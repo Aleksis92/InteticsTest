@@ -33,12 +33,12 @@ public class UsersServiceImpl implements UsersService {
     }
 
     @Override
-    public UsersBean getUserByUserName(String userName) {
-        if (usersDao.findByLogin(userName)==null) {
-            return null;
+    public UsersBean getUserByEmail(String email) {
+        if (usersDao.findByEmail(email)==null) {
+            return new UsersBean();
         }
         else {
-            return converter.convertToBean(usersDao.findByLogin(userName), UsersBean.class);
+            return converter.convertToBean(usersDao.findByEmail(email), UsersBean.class);
         }
     }
 
@@ -48,9 +48,9 @@ public class UsersServiceImpl implements UsersService {
     }
 
     @Override
-    public void insertUser(String login, String password, String Email) {
+    public void insertUser(String username, String password, String Email) {
 
-        usersDao.save(new Users(login, password, Email));
+        usersDao.save(new Users(username, password, Email));
     }
 
     @Override

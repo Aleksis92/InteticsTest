@@ -12,7 +12,7 @@ public interface UsersService {
 
     UsersBean getUserById(Integer userId);
 
-    UsersBean getUserByUserName(String userName);
+    UsersBean getUserByEmail(String email);
 
     Integer saveUser(UsersBean user);
 

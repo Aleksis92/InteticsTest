@@ -6,6 +6,7 @@
     <persistence-unit name="InteticsTest_project_db">
 
         <class>com.latyshonak.dao.Entity.Users</class>
+        <class>com.latyshonak.dao.Entity.Role</class>
 
         <properties>
 			<property name="hibernate.format_sql" value="true" />

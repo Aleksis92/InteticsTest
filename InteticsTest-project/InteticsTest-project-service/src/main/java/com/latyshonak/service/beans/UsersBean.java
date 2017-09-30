@@ -1,62 +1,26 @@
 package com.latyshonak.service.beans;
 
+import java.util.List;
+
 public class UsersBean {
 
     private int id;
 
-    private String login;
-
     private String password;
 
-    private String repeatPassword;
+    private String retypePassword;
 
     private String email;
 
-    public UsersBean(String login, String password, String email) {
-        this.login = login;
-        this.password = password;
-        this.email = email;
-    }
+    private String username;
+
+    private Boolean enabled;
+
+    private List<RoleBean> roles;
+
 
     public UsersBean() {
 
-    }
-
-    @Override
-    public String toString() {
-        return "UsersBean{" +
-                "id=" + id +
-                ", login='" + login + '\'' +
-                ", password='" + password + '\'' +
-                ", repeatPassword='" + repeatPassword + '\'' +
-                ", e_mail='" + email + '\'' +
-                '}';
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        UsersBean usersBean = (UsersBean) o;
-
-        if (id != usersBean.id) return false;
-
-        if (!login.equals(usersBean.login)) return false;
-        if (!password.equals(usersBean.password)) return false;
-        if (repeatPassword != null ? !repeatPassword.equals(usersBean.repeatPassword) : usersBean.repeatPassword != null)
-            return false;
-        return email.equals(usersBean.email);
-    }
-
-    @Override
-    public int hashCode() {
-        int result = id;
-        result = 31 * result + login.hashCode();
-        result = 31 * result + password.hashCode();
-        result = 31 * result + (repeatPassword != null ? repeatPassword.hashCode() : 0);
-        result = 31 * result + email.hashCode();
-        return result;
     }
 
     public int getId() {
@@ -67,12 +31,12 @@ public class UsersBean {
         this.id = id;
     }
 
-    public String getLogin() {
-        return login;
+    public String getUsername() {
+        return username;
     }
 
-    public void setLogin(String login) {
-        this.login = login;
+    public void setUsername(String login) {
+        this.username = login;
     }
 
     public String getPassword() {
@@ -83,12 +47,12 @@ public class UsersBean {
         this.password = password;
     }
 
-    public String getRepeatPassword() {
-        return repeatPassword;
+    public String getRetypePassword() {
+        return retypePassword;
     }
 
-    public void setRepeatPassword(String repeatPassword) {
-        this.repeatPassword = repeatPassword;
+    public void setRetypePassword(String repeatPassword) {
+        this.retypePassword = repeatPassword;
     }
 
     public String getEmail() {
@@ -99,4 +63,57 @@ public class UsersBean {
         this.email = email;
     }
 
+    public Boolean getEnabled() { return enabled; }
+
+    public void setEnabled(Boolean enabled) { this.enabled = enabled; }
+
+    public List<RoleBean> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(List<RoleBean> roles) {
+        this.roles = roles;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        UsersBean usersBean = (UsersBean) o;
+
+        if (id != usersBean.id) return false;
+        if (!password.equals(usersBean.password)) return false;
+        if (retypePassword != null ? !retypePassword.equals(usersBean.retypePassword) : usersBean.retypePassword != null)
+            return false;
+        if (!email.equals(usersBean.email)) return false;
+        if (username != null ? !username.equals(usersBean.username) : usersBean.username != null) return false;
+        if (enabled != null ? !enabled.equals(usersBean.enabled) : usersBean.enabled != null) return false;
+        return roles.equals(usersBean.roles);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = id;
+        result = 31 * result + password.hashCode();
+        result = 31 * result + (retypePassword != null ? retypePassword.hashCode() : 0);
+        result = 31 * result + email.hashCode();
+        result = 31 * result + (username != null ? username.hashCode() : 0);
+        result = 31 * result + (enabled != null ? enabled.hashCode() : 0);
+        result = 31 * result + roles.hashCode();
+        return result;
+    }
+
+    @Override
+    public String toString() {
+        return "UsersBean{" +
+                "id=" + id +
+                ", password='" + password + '\'' +
+                ", retypePassword='" + retypePassword + '\'' +
+                ", email='" + email + '\'' +
+                ", username='" + username + '\'' +
+                ", enabled=" + enabled +
+                ", roles=" + roles +
+                '}';
+    }
 }

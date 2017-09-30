@@ -11,14 +11,8 @@ import javax.servlet.http.HttpSession;
 public class IndexController  {
 
 
-    @RequestMapping(value = "/Index")
+    @RequestMapping(value = "/index.html")
     public ModelAndView indexReturn (HttpSession session) {
-        if (session.isNew()) {
-            session.setAttribute("Autorization", "ignored");
-            session.setAttribute("Login", "ignored");
-            session.setAttribute("Role", "ignored");
-        }
-
         return new ModelAndView("index");
     }
 }
