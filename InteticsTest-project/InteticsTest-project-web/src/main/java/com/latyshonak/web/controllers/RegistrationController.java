@@ -1,16 +1,11 @@
 package com.latyshonak.web.controllers;
 
-import javax.servlet.http.HttpSession;
-
-
+import com.latyshonak.service.CustomProvider;
 import com.latyshonak.service.UsersService;
 import com.latyshonak.service.beans.UsersBean;
 import com.latyshonak.service.utils.PreValidation;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -22,31 +17,37 @@ public class RegistrationController {
 	@Autowired
 	private UsersService usersService;
 
+	@Autowired
+	private CustomProvider customProvider;
+
 	@ModelAttribute("UserFromJspRegistration")
 	private UsersBean getRegistrationUser() {
 		return new UsersBean();
 	}
 
 	@RequestMapping(value = "/registrationPage.html")
-	public String returnRegistrationPage(Model model) {
+	public String returnRegistrationPage() {
 		return "registration";
 	}
 
 	@RequestMapping(value = "/registration.html", method = RequestMethod.POST)
-	public String registrationPost(HttpSession session, @ModelAttribute("UserFromJspRegistration") UsersBean userFromJSP) {
-		System.out.println(usersService.getUserByEmail(userFromJSP.getEmail()));
-		if (usersService.getUserByEmail(userFromJSP.getEmail()).getEmail() == null) {
-			if (PreValidation.checkEmail(userFromJSP.getEmail()) && PreValidation.checkPassword(userFromJSP.getPassword()) &&
-					PreValidation.checkRepeatPassword(userFromJSP.getPassword(), userFromJSP.getRetypePassword())) {
+	public String registrationPost(@ModelAttribute("UserFromJspRegistration") UsersBean userFromJSP) {
+		if (usersService.getUserByEmail(userFromJSP.getEmail()).getEmail() != null) {
+			return "redirect:/registrationPage.html?denided_user";
+		}
+		if (PreValidation.checkEmail(userFromJSP.getEmail()) &&
+			PreValidation.checkPassword(userFromJSP.getPassword()) &&
+			PreValidation.checkRepeatPassword(userFromJSP.getPassword(), userFromJSP.getRetypePassword()) &&
+			PreValidation.checkUsername(userFromJSP.getUsername())) {
 
-				usersService.insertUser(userFromJSP.getUsername(), userFromJSP.getPassword(),
-						userFromJSP.getEmail());
-				return "redirect:registration.html";
-			} else {
-				return "redirect:/registration.html?denided_validation";
-			}
+			usersService.insertUser(userFromJSP.getUsername(), userFromJSP.getPassword(),
+					userFromJSP.getEmail());
+			customProvider.authenticate(userFromJSP.getEmail());
+			return "redirect:registration.html";
+
 		} else {
-			return "redirect:/registration.html?denided_user";
+			return "redirect:/registrationPage.html?denided_validation";
+
 		}
 	}
 

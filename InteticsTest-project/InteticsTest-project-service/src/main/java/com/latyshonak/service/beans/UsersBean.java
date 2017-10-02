@@ -35,8 +35,8 @@ public class UsersBean {
         return username;
     }
 
-    public void setUsername(String login) {
-        this.username = login;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getPassword() {

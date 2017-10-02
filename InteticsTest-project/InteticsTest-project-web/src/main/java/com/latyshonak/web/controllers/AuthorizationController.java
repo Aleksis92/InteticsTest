@@ -25,7 +25,7 @@ public class AuthorizationController {
     private UsersService usersService;
 
     @RequestMapping(value = "/authorization.html", method = RequestMethod.GET)
-    public ModelAndView AuthorizationGet(HttpSession session) {
+    public ModelAndView AuthorizationGet() {
             return new ModelAndView("authorization");
             }
 

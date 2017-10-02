@@ -11,7 +11,7 @@ import javax.servlet.http.HttpSession;
 public class PreIndexController {
 
     @RequestMapping(value = "/")
-    public ModelAndView indexReturn (HttpSession session) {
+    public ModelAndView indexReturn () {
         return new ModelAndView("redirect:index.html");
     }
 }
