@@ -1,0 +1,167 @@
+.text-grey {
+    color: #8A8C8D;
+}
+
+.full-screen-row {
+    height: 100%;
+}
+
+.form-background {
+    background-color: white;
+}
+
+.container-background {
+    background-color: aliceblue;
+}
+
+.border {
+    border: 2px solid #060606;
+    border-radius: 10px;
+}
+
+#authorization-label {
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+
+#registration-button {
+    float: right;
+    margin-bottom: 1.5em;
+}
+
+.login-content {
+    margin-top: 1.5em;
+}
+
+.vertical-align-middle {
+    display:flex;
+    align-items:center;
+}
+
+
+.header-content-margin {
+    margin-bottom: 1em;
+    margin-top: 1em;
+}
+
+.border-bottom {
+    border-bottom: solid 1px #8A8C8D;
+}
+
+#header:hover {
+    border-bottom: solid 2px #8A8C8D;
+}
+
+#search-input {
+    width: 80%!important;
+    margin-top: 1em;
+}
+#search-button {
+    margin-top: 1em;
+}
+
+.tags-button-size {
+    padding: 0.2rem 0.2rem!important;
+    line-height: 0.8!important;
+    font-size: 0.8rem!important;
+}
+
+#search-form {
+    margin-bottom: 8px;
+}
+
+.images-margin {
+    margin-top: 15px;
+}
+
+.div-images-size {
+    margin-top: 2vmin;
+}
+
+.no-padding-left-right {
+    padding-right: 0!important;
+    padding-left: 0!important;
+}
+
+#box__label {
+    margin:auto;
+}
+
+.modal-content {
+    background-color: aliceblue;
+}
+
+.box__dragndrop,
+.box__uploading,
+.box__success,
+.box__error {
+    display: none;
+}
+
+.box__input.has-advanced-upload {
+    background-color: #C8DADF;
+    outline: 2px dashed black;
+    outline-offset: -10px;
+}
+.box__input.has-advanced-upload .box__dragndrop {
+    display: inline;
+}
+
+.inputfile {
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+}
+
+.inputfile + label {
+    font-size: 1.25em;
+    font-weight: 700;
+    color: grey;
+    background-color: rgba(0, 0, 0, 0);
+    display: inline-block;
+}
+
+.inputfile:focus + label,
+.inputfile + label:hover {
+    color: blue;
+}
+
+.inputfile + label {
+    cursor: pointer;
+}
+
+.box__input.is-dragover {
+    background-color: aliceblue;
+}
+
+.box__input {
+    width:100%;
+    height: 100%;
+    min-width: 160px;
+    min-height: 200px;
+    background-color: aliceblue;
+}
+
+.box-content {
+    width: 100%;
+    resize: none;
+    margin-bottom: 5%;
+}
+
+#image-tags {
+    width: 100%;
+    resize: none;
+}
+.box.is-uploading .box__input {
+    visibility: hidden;
+}
+.box.is-uploading .box__uploading {
+    display: block;
+}
+
+
+
+

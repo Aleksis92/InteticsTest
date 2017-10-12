@@ -7,6 +7,8 @@
 
         <class>com.latyshonak.dao.Entity.Users</class>
         <class>com.latyshonak.dao.Entity.Role</class>
+        <class>com.latyshonak.dao.Entity.Images</class>
+        <class>com.latyshonak.dao.Entity.Tags</class>
 
         <properties>
 			<property name="hibernate.format_sql" value="true" />

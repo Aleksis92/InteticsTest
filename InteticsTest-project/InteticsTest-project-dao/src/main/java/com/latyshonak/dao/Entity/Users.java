@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name="Users")
+@Table(name="users")
 public class Users {
 
 
@@ -23,27 +23,18 @@ public class Users {
         private String email;
 
         @Column(name = "enabled")
-     private Boolean enabled;
+        private Boolean enabled;
 
         @ManyToMany(fetch = FetchType.LAZY, mappedBy = "users")
         private List<Role> roles;
+
+        @ManyToMany(fetch = FetchType.LAZY, mappedBy = "users")
+        private List<Images> images;
 
 
         public Users() {
 
         }
-
-
-    public Users(String username, String password, String email) {
-        this.username = username;
-        this.password = password;
-        this.email = email;
-    }
-
-    public Users(String username, String password) {
-        this.username = username;
-        this.password = password;
-    }
 
     public int getId() {
         return id;
@@ -93,6 +84,25 @@ public class Users {
         this.roles = roles;
     }
 
+    public List<Images> getImages() {
+        return images;
+    }
+
+    public void setImages(List<Images> images) {
+        this.images = images;
+    }
+
+    public Users(String username, String password, String email) {
+        this.username = username;
+        this.password = password;
+        this.email = email;
+    }
+
+    public Users(String username, String password) {
+        this.username = username;
+        this.password = password;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -105,7 +115,8 @@ public class Users {
         if (!password.equals(users.password)) return false;
         if (!email.equals(users.email)) return false;
         if (!enabled.equals(users.enabled)) return false;
-        return roles != null ? roles.equals(users.roles) : users.roles == null;
+        if (!roles.equals(users.roles)) return false;
+        return images != null ? images.equals(users.images) : users.images == null;
     }
 
     @Override
@@ -115,7 +126,8 @@ public class Users {
         result = 31 * result + password.hashCode();
         result = 31 * result + email.hashCode();
         result = 31 * result + enabled.hashCode();
-        result = 31 * result + (roles != null ? roles.hashCode() : 0);
+        result = 31 * result + roles.hashCode();
+        result = 31 * result + (images != null ? images.hashCode() : 0);
         return result;
     }
 
@@ -128,6 +140,7 @@ public class Users {
                 ", email='" + email + '\'' +
                 ", enabled=" + enabled +
                 ", roles=" + roles +
+                ", images=" + images +
                 '}';
     }
 }

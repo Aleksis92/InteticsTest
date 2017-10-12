@@ -1,5 +1,9 @@
 package com.latyshonak.service.beans;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
 
 public class UsersBean {
@@ -18,14 +22,17 @@ public class UsersBean {
 
     private List<RoleBean> roles;
 
+    private byte[] logo;
 
     public UsersBean() {
 
     }
 
-    public int getId() {
-        return id;
-    }
+    public byte[] getLogo() { return logo; }
+
+    public void setLogo(byte[] logo) { this.logo = logo; }
+
+    public int getId() { return id; }
 
     public void setId(int id) {
         this.id = id;

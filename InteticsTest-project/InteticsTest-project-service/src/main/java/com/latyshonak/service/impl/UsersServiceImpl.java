@@ -1,11 +1,14 @@
 package com.latyshonak.service.impl;
 
 
+import com.latyshonak.dao.Entity.Images;
 import com.latyshonak.dao.Entity.Users;
+import com.latyshonak.dao.ImagesDao;
 import com.latyshonak.dao.UsersDao;
 
 import com.latyshonak.service.EntityBeanConverter;
 import com.latyshonak.service.UsersService;
+import com.latyshonak.service.beans.ImageBean;
 import com.latyshonak.service.beans.UsersBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,6 +21,9 @@ public class UsersServiceImpl implements UsersService {
 
     @Autowired
     private UsersDao usersDao;
+
+    @Autowired
+    private ImagesDao imagesDao;
 
     @Autowired
     private EntityBeanConverter converter;
@@ -52,6 +58,8 @@ public class UsersServiceImpl implements UsersService {
 
         usersDao.save(new Users(username, password, Email));
     }
+
+
 
     @Override
     public Integer saveUser(UsersBean user) {

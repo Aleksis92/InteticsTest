@@ -17,7 +17,7 @@
         <intercept-url pattern="/registration.html" access="permitAll" />
         <intercept-url pattern="/access_denided.html" access="permitAll" />
         <intercept-url pattern="/logout.html" access="permitAll" />
-        <intercept-url pattern="/**" access="isAuthenticated()" />
+        <intercept-url pattern="/index.html" access="isAuthenticated()" />
 
 
 
