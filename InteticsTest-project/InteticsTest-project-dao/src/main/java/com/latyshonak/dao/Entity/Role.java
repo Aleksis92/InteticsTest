@@ -25,9 +25,17 @@ public class Role {
             inverseJoinColumns = { @JoinColumn(name = "fk_user_id") })
     private List<Users> users;
 
+
+
     public Role() {
-        super();
+
     }
+
+    public Role(String name, String description) {
+        this.name = name;
+        this.description = description;
+    }
+
 
     public Integer getId() {
         return id;

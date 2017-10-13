@@ -1,5 +1,6 @@
 package com.latyshonak.service.beans;
 
+
 import java.util.Arrays;
 
 public class ImageBean {
@@ -13,6 +14,11 @@ public class ImageBean {
     private String description;
 
     private String tags;
+
+    private String createdBy;
+
+    public ImageBean() {
+    }
 
     public Integer getId() {
         return id;
@@ -54,6 +60,14 @@ public class ImageBean {
         this.tags = tags;
     }
 
+    public String getCreatedBy() {
+        return createdBy;
+    }
+
+    public void setCreatedBy(String createdBy) {
+        this.createdBy = createdBy;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -61,20 +75,22 @@ public class ImageBean {
 
         ImageBean imageBean = (ImageBean) o;
 
-        if (!id.equals(imageBean.id)) return false;
+        if (id != null ? !id.equals(imageBean.id) : imageBean.id != null) return false;
         if (!name.equals(imageBean.name)) return false;
         if (!Arrays.equals(image, imageBean.image)) return false;
         if (!description.equals(imageBean.description)) return false;
-        return tags.equals(imageBean.tags);
+        if (!tags.equals(imageBean.tags)) return false;
+        return createdBy != null ? createdBy.equals(imageBean.createdBy) : imageBean.createdBy == null;
     }
 
     @Override
     public int hashCode() {
-        int result = id.hashCode();
+        int result = id != null ? id.hashCode() : 0;
         result = 31 * result + name.hashCode();
         result = 31 * result + Arrays.hashCode(image);
         result = 31 * result + description.hashCode();
         result = 31 * result + tags.hashCode();
+        result = 31 * result + (createdBy != null ? createdBy.hashCode() : 0);
         return result;
     }
 
@@ -86,6 +102,7 @@ public class ImageBean {
                 ", image=" + Arrays.toString(image) +
                 ", description='" + description + '\'' +
                 ", tags='" + tags + '\'' +
+                ", createdBy='" + createdBy + '\'' +
                 '}';
     }
 }

@@ -8,9 +8,16 @@
 
 	<context:annotation-config />
 	<context:component-scan base-package="com.latyshonak.service.impl" />
+	<context:component-scan base-package="com.latyshonak.service.impl.dozer.converters" />
 
 	<bean class="org.dozer.spring.DozerBeanMapperFactoryBean">
 		<property name="mappingFiles" value="classpath:/dozer/mappings/*_mapping.xml" />
+
+		<property name="customConverters">
+			<list>
+				<bean class="com.latyshonak.service.impl.dozer.converters.TagsToTagListConverter" />
+			</list>
+		</property>
 	</bean>
 
 </beans>

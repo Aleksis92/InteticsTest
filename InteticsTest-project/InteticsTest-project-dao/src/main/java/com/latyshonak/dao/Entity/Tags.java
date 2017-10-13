@@ -1,6 +1,7 @@
 package com.latyshonak.dao.Entity;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -15,12 +16,15 @@ public class Tags {
     @Column(name = "tag")
     private String tag;
 
-    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "images_to_tags",
             joinColumns = {
                     @JoinColumn(name = "fk_tags_id")},
             inverseJoinColumns = {@JoinColumn(name = "fk_images_id")})
     private List<Images> images;
+
+    public Tags() {
+    }
 
     public Integer getId() {
         return id;
@@ -46,6 +50,10 @@ public class Tags {
         this.images = images;
     }
 
+    public void addImage(Images image) {
+        this.images.add(image);
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -55,14 +63,14 @@ public class Tags {
 
         if (!id.equals(tags.id)) return false;
         if (!tag.equals(tags.tag)) return false;
-        return images != null ? images.equals(tags.images) : tags.images == null;
+        return images.equals(tags.images);
     }
 
     @Override
     public int hashCode() {
         int result = id.hashCode();
         result = 31 * result + tag.hashCode();
-        result = 31 * result + (images != null ? images.hashCode() : 0);
+        result = 31 * result + images.hashCode();
         return result;
     }
 

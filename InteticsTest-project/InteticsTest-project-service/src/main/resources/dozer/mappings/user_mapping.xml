@@ -3,15 +3,13 @@
           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
           xsi:schemaLocation="http://dozer.sourceforge.net http://dozer.sourceforge.net/schema/beanmapping.xsd">
 
-<!--
-    <mapping map-null="false">
-        <class-a>com.latyshonak.entity.Users</class-a>
+    <mapping>
+        <class-a>com.latyshonak.dao.Entity.Users</class-a>
         <class-b>com.latyshonak.service.beans.UsersBean</class-b>
-        <field>
-            <a>to.one</a>
-            <b>repeatPassword</b>
+        <field custom-converter="com.latyshonak.service.impl.dozer.converters.ImageCountConverter">
+            <a>images</a>
+            <b>imagesList</b>
         </field>
     </mapping>
--->
 
 </mappings>

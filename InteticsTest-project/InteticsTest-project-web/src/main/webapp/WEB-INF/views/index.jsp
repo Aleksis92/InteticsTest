@@ -1,4 +1,5 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8"%>
 <!Doctype>
 <html>
@@ -6,9 +7,15 @@
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 		<title>Image Previewer</title>
-		<link href="../../webContent/CSS/style.css" rel="stylesheet" type="text/css"/>
+		<c:url var="css_url" value="/webContent/CSS/style.css" />
+		<c:url var="jquery_url" value="/webContent/JS/jquery-3.2.1.min.js" />
+		<c:url var="custom_js_url" value="/webContent/JS/index.js" />
+		<c:url var="add_img_url" value="/webContent/Images/add.png" />
+		<c:url var="add_logo_url" value="/webContent/Images/logo.png" />
+		<link href="${css_url}" rel="stylesheet" type="text/css"/>
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous"/>
 		<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+	</head>
 	</head>
 	<body>
 
@@ -54,13 +61,13 @@
 			</div>
 		</div>
 	</div>
-	<div class="container-fluid container-background">
+	<div class="container-fluid">
 		<div class="row">
 			<!-- Header -->
 			<div class="container container-background  no-padding-left-right" >
 				<div id="header" class="row border-bottom no-gutters" >
 					<div class="col-7 vertical-align-middle">
-						<img class="header-content-margin" src="../../webContent/Images/logo.png">
+						<img class="header-content-margin" src="${add_logo_url}">
 						<h5 class="header-content-margin text-grey"><strong>Welcome to Image Previewer!</strong></h5>
 					</div>
 					<div class="col-4 vertical-align-middle justify-content-end">
@@ -106,7 +113,8 @@
 			<div class="container container-background" >
 				<div id="row" class="row">
 					<div id="new-image" class="col-sm-6 col-md-4 col-lg-3 card div-images-size">
-							<img src="../../webContent/Images/add.png">
+
+						<img src="${add_img_url}">
 					</div>
 				</div>
 			</div>
@@ -129,14 +137,17 @@
 
 
 
-	<script src="../../webContent/JS/jquery-3.2.1.min.js"></script>
+
+
+
+	<script src="${jquery_url}"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"
 			integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4"
 			crossorigin="anonymous"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"
 			integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1"
 			crossorigin="anonymous"></script>
-		<script type="text/javascript" src="../../webContent/JS/index.js"></script>
+	<script type="text/javascript" src="${custom_js_url}"></script>
 	</body>
 </html>
 

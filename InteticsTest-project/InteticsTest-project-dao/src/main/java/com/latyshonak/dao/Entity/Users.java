@@ -1,6 +1,7 @@
 package com.latyshonak.dao.Entity;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -28,13 +29,12 @@ public class Users {
         @ManyToMany(fetch = FetchType.LAZY, mappedBy = "users")
         private List<Role> roles;
 
-        @ManyToMany(fetch = FetchType.LAZY, mappedBy = "users")
+        @OneToMany(mappedBy = "creator", fetch = FetchType.LAZY)
         private List<Images> images;
 
 
-        public Users() {
 
-        }
+        public Users() { }
 
     public int getId() {
         return id;
@@ -92,11 +92,22 @@ public class Users {
         this.images = images;
     }
 
-    public Users(String username, String password, String email) {
+     public Users(String username, String password, String email) {
         this.username = username;
         this.password = password;
         this.email = email;
+        this.enabled = true;
     }
+
+    /*public Users(String username, String password, String email) {
+        this.username = username;
+        this.password = password;
+        this.email = email;
+        List<Role> listRole = new ArrayList<Role>();
+        listRole.add(new Role("User", "Role for User"));
+        this.roles = listRole;
+
+    }*/
 
     public Users(String username, String password) {
         this.username = username;
@@ -114,8 +125,8 @@ public class Users {
         if (!username.equals(users.username)) return false;
         if (!password.equals(users.password)) return false;
         if (!email.equals(users.email)) return false;
-        if (!enabled.equals(users.enabled)) return false;
-        if (!roles.equals(users.roles)) return false;
+        if (enabled != null ? !enabled.equals(users.enabled) : users.enabled != null) return false;
+        if (roles != null ? !roles.equals(users.roles) : users.roles != null) return false;
         return images != null ? images.equals(users.images) : users.images == null;
     }
 
@@ -125,8 +136,8 @@ public class Users {
         result = 31 * result + username.hashCode();
         result = 31 * result + password.hashCode();
         result = 31 * result + email.hashCode();
-        result = 31 * result + enabled.hashCode();
-        result = 31 * result + roles.hashCode();
+        result = 31 * result + (enabled != null ? enabled.hashCode() : 0);
+        result = 31 * result + (roles != null ? roles.hashCode() : 0);
         result = 31 * result + (images != null ? images.hashCode() : 0);
         return result;
     }
